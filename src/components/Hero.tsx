@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
 import { CheckCircle2, XCircle, AlertTriangle, Code2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { WaitlistForm } from "@/components/WaitlistForm";
+import { useWaitlistStats } from "@/hooks/use-waitlist-stats";
 
 const Hero = () => {
+  const { count: waitlistCount } = useWaitlistStats();
+
   return (
     <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-screen flex items-center">
       {/* Animated background grid */}
@@ -186,24 +188,15 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="max-w-md mx-auto"
+            className="max-w-lg mx-auto"
           >
-            <div className="flex flex-col sm:flex-row gap-4 mb-4">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 bg-card border-border text-foreground placeholder:text-muted-foreground h-14 text-base"
-              />
-              <Button className="bg-gradient-primary text-primary-foreground hover:opacity-90 transition-all hover:scale-105 glow-primary h-14 px-8 text-base font-semibold">
-                Join Waitlist
-              </Button>
-            </div>
+            <WaitlistForm source="hero" />
 
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 1 }}
-              className="text-center space-y-2"
+              className="text-center space-y-2 mt-4"
             >
               <p className="text-sm text-muted-foreground">
                 Launching December 2025 • No credit card required
@@ -215,7 +208,7 @@ const Hero = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 size={14} className="text-primary" />
-                  <span>500+ developers waiting</span>
+                  <span>{waitlistCount}+ developers waiting</span>
                 </div>
               </div>
             </motion.div>
