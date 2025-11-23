@@ -12,37 +12,31 @@ const Features = () => {
       icon: Zap,
       title: "Instant Validation",
       description: "Real-time analysis of your AI-generated code in milliseconds",
-      span: "col-span-1 row-span-1",
     },
     {
       icon: Target,
       title: "Confidence Score",
       description: "0-100 rating showing how likely the code is to work correctly",
-      span: "col-span-1 row-span-1",
     },
     {
       icon: Lock,
       title: "Security Scanning",
       description: "Automatically detects vulnerabilities like SQL injection and XSS",
-      span: "col-span-1 row-span-2",
     },
     {
       icon: Wrench,
       title: "One-Click Fixes",
       description: "Auto-correct common errors with a single click",
-      span: "col-span-1 row-span-1",
     },
     {
       icon: GitCompare,
       title: "Diff Highlighting",
       description: "See exactly what changed and why",
-      span: "col-span-1 row-span-1",
     },
     {
       icon: Rocket,
       title: "Works with Any AI",
       description: "Browser extension integrates directly into your workflow with all AI tools",
-      span: "col-span-1 row-span-2",
     },
   ];
 
@@ -69,7 +63,7 @@ const Features = () => {
                 initial={{ opacity: 0, y: 40 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`${feature.span} bg-card border border-border rounded-lg p-6 card-elevated hover:border-primary/50 hover:scale-105 transition-all group`}
+                className="bg-card border border-border rounded-lg p-6 card-elevated hover:border-primary/50 hover:scale-105 transition-all group"
               >
                 <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center mb-4 group-hover:animate-glow-pulse">
                   <Icon className="text-primary-foreground" size={24} />
