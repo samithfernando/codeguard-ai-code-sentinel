@@ -1,5 +1,4 @@
 import { supabase } from './supabase';
-import { sendWelcomeEmail } from './emailService';
 
 export interface WaitlistEntry {
   id?: string;
@@ -25,7 +24,7 @@ export const addToWaitlist = async (entry: Omit<WaitlistEntry, 'id' | 'created_a
     if (existingEntry) {
       return {
         success: false,
-        message: 'You\'re already on our waitlist! Check your email for confirmation.'
+        message: 'You\'re already on our waitlist!'
       };
     }
 
@@ -47,20 +46,9 @@ export const addToWaitlist = async (entry: Omit<WaitlistEntry, 'id' | 'created_a
       throw error;
     }
 
-    // Send welcome email
-    try {
-      await sendWelcomeEmail({
-        email: entry.email,
-        name: entry.name
-      });
-    } catch (emailError) {
-      console.error('Failed to send welcome email:', emailError);
-      // Don't fail the whole operation if email fails
-    }
-
     return {
       success: true,
-      message: 'Welcome to CodeSentinelAI! Check your email for confirmation.',
+      message: 'Welcome to CodeSentinelAI! You\'ve been added to our waitlist.',
       data
     };
 

@@ -121,7 +121,7 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({
             </motion.div>
             <h3 className="text-xl font-semibold mb-2">You're all set! 🎉</h3>
             <p className="text-muted-foreground mb-4">
-              Check your email for a welcome message with more details.
+              You've been successfully added to our waitlist. We'll notify you when we launch!
             </p>
             <Button
               variant="outline"
