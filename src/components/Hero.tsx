@@ -1,94 +1,225 @@
 import { motion } from "framer-motion";
-import { CheckCircle2, XCircle } from "lucide-react";
+import { CheckCircle2, XCircle, AlertTriangle, Code2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 const Hero = () => {
   return (
-    <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-screen flex items-center">
       {/* Animated background grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f2937_1px,transparent_1px),linear-gradient(to_bottom,#1f2937_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20" />
       
+      {/* Animated particles */}
+      <div className="absolute inset-0">
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-primary/30 rounded-full"
+            initial={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+            }}
+            animate={{
+              y: [null, Math.random() * window.innerHeight],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: Math.random() * 10 + 10,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+        ))}
+      </div>
+      
       <div className="container mx-auto relative z-10">
-        <div className="max-w-5xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto">
           {/* Main headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold mb-6 leading-tight"
-          >
-            Stop Debugging{" "}
-            <span className="text-gradient">AI Code</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl sm:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto"
-          >
-            Validate ChatGPT code in seconds. Catch errors before you copy-paste.
-          </motion.p>
-
-          {/* Split-screen mockup */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="grid md:grid-cols-2 gap-6 mb-12 max-w-4xl mx-auto"
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="text-center mb-8"
           >
-            {/* Left: ChatGPT with errors */}
-            <div className="bg-card border border-destructive/50 rounded-lg p-6 card-elevated hover:scale-105 transition-transform">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-sm text-muted-foreground">ChatGPT Output</span>
-                <XCircle className="text-destructive" size={24} />
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-6 py-2 mb-8"
+            >
+              <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+              <span className="text-sm text-primary font-medium">Stop Wasting Time on Broken Code</span>
+            </motion.div>
+
+            <h1 className="text-5xl sm:text-6xl lg:text-8xl font-display font-bold mb-6 leading-tight">
+              Stop Debugging{" "}
+              <br />
+              <span className="text-gradient animate-pulse">AI Code</span>
+            </h1>
+
+            <p className="text-xl sm:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
+              Validate AI-generated code in seconds. Catch errors, security flaws, and logic bugs before you copy-paste.
+            </p>
+          </motion.div>
+
+          {/* Enhanced split-screen mockup with code examples */}
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="grid lg:grid-cols-2 gap-8 mb-16 max-w-5xl mx-auto"
+          >
+            {/* Left: AI Code with errors */}
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              className="relative bg-card border border-destructive/50 rounded-xl p-6 card-elevated overflow-hidden group"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-destructive/5 to-transparent" />
+              
+              <div className="relative">
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-2">
+                    <Code2 className="text-destructive" size={20} />
+                    <span className="text-sm font-semibold text-destructive">AI Output</span>
+                  </div>
+                  <XCircle className="text-destructive" size={24} />
+                </div>
+
+                <div className="bg-background/50 backdrop-blur rounded-lg p-4 font-mono text-xs sm:text-sm space-y-2 border border-destructive/20">
+                  <div className="text-muted-foreground">
+                    <span className="text-primary">function</span>{" "}
+                    <span className="text-accent">fetchData</span>() {"{"}
+                  </div>
+                  <div className="text-muted-foreground pl-4">
+                    <span className="text-primary">const</span> response = <span className="text-accent">fetch</span>(url);
+                  </div>
+                  <div className="text-muted-foreground pl-4 relative">
+                    <span className="text-primary">return</span> response.json()
+                    <motion.div
+                      animate={{ opacity: [1, 0.5, 1] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                      className="absolute -left-2 top-0 w-1 h-full bg-destructive rounded"
+                    />
+                  </div>
+                  <div className="text-muted-foreground">{"}"}</div>
+                </div>
+
+                <div className="mt-4 space-y-2">
+                  <div className="flex items-start gap-2 text-xs text-destructive bg-destructive/10 rounded p-3">
+                    <AlertTriangle size={16} className="flex-shrink-0 mt-0.5" />
+                    <div>
+                      <span className="font-semibold">Missing await:</span> Promise not handled
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-2 text-xs text-destructive bg-destructive/10 rounded p-3">
+                    <AlertTriangle size={16} className="flex-shrink-0 mt-0.5" />
+                    <div>
+                      <span className="font-semibold">No error handling:</span> Will crash on failure
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="bg-destructive/10 rounded p-4 font-mono text-sm text-left">
-                <div className="text-destructive">❌ Syntax Error</div>
-                <div className="text-muted-foreground mt-2">Missing semicolon line 42</div>
-              </div>
-            </div>
+            </motion.div>
 
             {/* Right: CodeGuard validation */}
-            <div className="bg-card border border-primary/50 rounded-lg p-6 card-elevated glow-primary hover:scale-105 transition-transform">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-sm text-muted-foreground">CodeGuard Analysis</span>
-                <CheckCircle2 className="text-primary" size={24} />
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              className="relative bg-card border border-primary/50 rounded-xl p-6 card-elevated glow-primary overflow-hidden group"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
+              
+              <div className="relative">
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="text-primary" size={20} />
+                    <span className="text-sm font-semibold text-primary">CodeGuard</span>
+                  </div>
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                    className="w-6 h-6 border-2 border-primary/30 border-t-primary rounded-full"
+                  />
+                </div>
+
+                <div className="bg-background/50 backdrop-blur rounded-lg p-6 border border-primary/20">
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ duration: 0.8, delay: 0.8 }}
+                    className="text-center mb-4"
+                  >
+                    <div className="text-6xl font-display font-bold text-gradient mb-2">23%</div>
+                    <div className="text-sm text-muted-foreground">Confidence Score</div>
+                  </motion.div>
+
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-muted-foreground">Syntax Check</span>
+                      <span className="text-primary">✓ Passed</span>
+                    </div>
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-muted-foreground">Logic Analysis</span>
+                      <span className="text-destructive">✗ 2 Issues</span>
+                    </div>
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-muted-foreground">Security Scan</span>
+                      <span className="text-primary">✓ Clean</span>
+                    </div>
+                  </div>
+                </div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1 }}
+                  className="mt-4 bg-primary/10 rounded-lg p-3 border border-primary/20"
+                >
+                  <p className="text-xs text-primary font-semibold mb-2">⚡ Quick Fix Available</p>
+                  <p className="text-xs text-muted-foreground">Add async/await and try-catch block</p>
+                </motion.div>
               </div>
-              <div className="bg-primary/10 rounded p-4 text-left">
-                <div className="text-2xl font-bold text-gradient mb-2">23%</div>
-                <div className="text-sm text-foreground">Confidence Score</div>
-                <div className="text-sm text-destructive mt-2">3 issues found</div>
-              </div>
-            </div>
+            </motion.div>
           </motion.div>
 
           {/* Email capture */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto"
-          >
-            <Input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 bg-card border-border text-foreground placeholder:text-muted-foreground"
-            />
-            <Button className="bg-gradient-primary text-primary-foreground hover:opacity-90 transition-all hover:scale-105 glow-primary">
-              Join Waitlist
-            </Button>
-          </motion.div>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-sm text-muted-foreground mt-4"
+            className="max-w-md mx-auto"
           >
-            Launching December 2025 • No credit card required
-          </motion.p>
+            <div className="flex flex-col sm:flex-row gap-4 mb-4">
+              <Input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 bg-card border-border text-foreground placeholder:text-muted-foreground h-14 text-base"
+              />
+              <Button className="bg-gradient-primary text-primary-foreground hover:opacity-90 transition-all hover:scale-105 glow-primary h-14 px-8 text-base font-semibold">
+                Join Waitlist
+              </Button>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1 }}
+              className="text-center space-y-2"
+            >
+              <p className="text-sm text-muted-foreground">
+                Launching December 2025 • No credit card required
+              </p>
+              <div className="flex items-center justify-center gap-6 text-xs text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 size={14} className="text-primary" />
+                  <span>Free tier available</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 size={14} className="text-primary" />
+                  <span>500+ developers waiting</span>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

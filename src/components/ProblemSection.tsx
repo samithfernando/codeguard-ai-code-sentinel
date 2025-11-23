@@ -11,7 +11,7 @@ const ProblemSection = () => {
     {
       icon: AlertTriangle,
       title: "Confidently Wrong",
-      description: "ChatGPT gives wrong answers with 100% confidence, making it hard to spot errors until they break production.",
+      description: "AI models generate incorrect code with 100% confidence, making it hard to spot errors until they break production.",
     },
     {
       icon: Bug,

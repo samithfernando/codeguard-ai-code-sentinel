@@ -13,7 +13,7 @@ const StatsBar = () => {
     },
     {
       value: "52%",
-      label: "ChatGPT wrong 52% of the time",
+      label: "AI models produce incorrect code 52% of the time",
     },
     {
       value: "45%",
