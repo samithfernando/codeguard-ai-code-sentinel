@@ -22,9 +22,8 @@ const Navigation = () => {
             animate={{ opacity: 1, x: 0 }}
             className="flex items-center space-x-2"
           >
-            <div className="w-8 h-8 bg-gradient-primary rounded-lg" />
             <span className="text-xl font-display font-bold text-foreground">
-              CodeGuard
+              CodeSentinelAI
             </span>
           </motion.div>
 

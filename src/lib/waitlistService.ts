@@ -60,7 +60,7 @@ export const addToWaitlist = async (entry: Omit<WaitlistEntry, 'id' | 'created_a
 
     return {
       success: true,
-      message: 'Welcome to CodeGuard AI! Check your email for confirmation.',
+      message: 'Welcome to CodeSentinelAI! Check your email for confirmation.',
       data
     };
 

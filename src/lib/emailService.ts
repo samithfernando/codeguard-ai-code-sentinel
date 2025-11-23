@@ -10,9 +10,9 @@ interface WelcomeEmailData {
 export const sendWelcomeEmail = async ({ email, name }: WelcomeEmailData) => {
   try {
     const { data, error } = await resend.emails.send({
-      from: 'samithnfernando@gmail.com',
+      from: 'CodeSentinelAI <samithnfernando@gmail.com>',
       to: email,
-      subject: 'Welcome to CodeGuard AI - You\'re on the Waitlist! 🚀',
+      subject: 'Welcome to CodeSentinelAI - You\'re on the Waitlist! 🚀',
       html: createWelcomeEmailTemplate({ email, name }),
     });
 
@@ -37,7 +37,7 @@ const createWelcomeEmailTemplate = ({ }: { email: string; name?: string }) => {
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Welcome to CodeGuard AI</title>
+      <title>Welcome to CodeSentinelAI</title>
       <style>
         * {
           margin: 0;
@@ -213,7 +213,7 @@ const createWelcomeEmailTemplate = ({ }: { email: string; name?: string }) => {
     <body>
       <div class="container">
         <div class="header">
-          <div class="logo">CodeGuard AI</div>
+          <div class="logo">CodeSentinelAI</div>
           <div class="subtitle">Stop Debugging AI Code</div>
         </div>
         
@@ -221,16 +221,16 @@ const createWelcomeEmailTemplate = ({ }: { email: string; name?: string }) => {
           <div class="greeting">Welcome aboard, ${displayName}! 🎉</div>
           
           <div class="message">
-            Thank you for joining the CodeGuard AI waitlist! You're now part of an exclusive group of forward-thinking developers who are ready to revolutionize how we work with AI-generated code.
+            Thank you for joining the CodeSentinelAI waitlist! You're now part of an exclusive group of forward-thinking developers who are ready to revolutionize how we work with AI-generated code.
           </div>
           
           <div class="highlight-box">
             <div class="highlight-title">🚀 What's Next?</div>
-            <p>We're putting the finishing touches on CodeGuard AI and expect to launch in <strong>December 2025</strong>. You'll be among the first to get access to our powerful code validation platform.</p>
+            <p>We're putting the finishing touches on CodeSentinelAI and expect to launch in <strong>December 2025</strong>. You'll be among the first to get access to our powerful code validation platform.</p>
           </div>
           
           <div class="message">
-            <strong>What CodeGuard AI will do for you:</strong>
+            <strong>What CodeSentinelAI will do for you:</strong>
           </div>
           
           <ul class="feature-list">
@@ -272,8 +272,8 @@ const createWelcomeEmailTemplate = ({ }: { email: string; name?: string }) => {
           </div>
           
           <center>
-            <a href="https://codeguard-ai.com" class="cta-button">
-              Learn More About CodeGuard AI
+            <a href="https://codesentinelai.com" class="cta-button">
+              Learn More About CodeSentinelAI
             </a>
           </center>
           
@@ -287,19 +287,19 @@ const createWelcomeEmailTemplate = ({ }: { email: string; name?: string }) => {
           
           <div class="message">
             Best regards,<br>
-            <strong>The CodeGuard AI Team</strong>
+            <strong>The CodeSentinelAI Team</strong>
           </div>
         </div>
         
         <div class="footer">
-          <p>CodeGuard AI - Revolutionizing AI Code Validation</p>
+          <p>CodeSentinelAI - Revolutionizing AI Code Validation</p>
           <div class="social-links">
             <a href="#">Twitter</a> •
             <a href="#">LinkedIn</a> •
             <a href="#">GitHub</a>
           </div>
           <p style="margin-top: 15px; font-size: 12px;">
-            This email was sent because you signed up for the CodeGuard AI waitlist.<br>
+            This email was sent because you signed up for the CodeSentinelAI waitlist.<br>
             If you no longer wish to receive these emails, you can <a href="#" style="color: #6b7280;">unsubscribe here</a>.
           </p>
         </div>

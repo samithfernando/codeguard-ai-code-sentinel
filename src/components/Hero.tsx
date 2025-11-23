@@ -134,7 +134,7 @@ const Hero = () => {
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="text-primary" size={20} />
-                    <span className="text-sm font-semibold text-primary">CodeGuard</span>
+                    <span className="text-sm font-semibold text-primary">CodeSentinelAI</span>
                   </div>
                   <motion.div
                     animate={{ rotate: 360 }}

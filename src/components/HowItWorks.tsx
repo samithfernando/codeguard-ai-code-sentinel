@@ -15,7 +15,7 @@ const HowItWorks = () => {
     },
     {
       icon: Scan,
-      title: "CodeGuard Analyzes",
+      title: "CodeSentinelAI Analyzes",
       description: "Our AI scans for errors, bugs, and vulnerabilities instantly",
     },
     {

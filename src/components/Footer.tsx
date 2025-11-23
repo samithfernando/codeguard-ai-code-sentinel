@@ -19,16 +19,15 @@ const Footer = () => {
           {/* Logo & Copyright */}
           <div>
             <div className="flex items-center space-x-2 mb-3">
-              <div className="w-8 h-8 bg-gradient-primary rounded-lg" />
               <span className="text-xl font-display font-bold text-foreground">
-                CodeGuard
+                CodeSentinelAI
               </span>
             </div>
             <p className="text-sm text-muted-foreground">
               Stop debugging AI code
             </p>
             <p className="text-xs text-muted-foreground mt-2">
-              © 2025 CodeGuard. All rights reserved.
+              © 2025 CodeSentinelAI. All rights reserved.
             </p>
           </div>
 
