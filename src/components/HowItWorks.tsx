@@ -10,8 +10,8 @@ const HowItWorks = () => {
   const steps = [
     {
       icon: Code2,
-      title: "ChatGPT Generates Code",
-      description: "Copy code from ChatGPT like you normally would",
+      title: "AI Generates Code",
+      description: "Copy code from any AI tool like you normally would",
     },
     {
       icon: Scan,

@@ -40,8 +40,8 @@ const Features = () => {
     },
     {
       icon: Rocket,
-      title: "Works with ChatGPT",
-      description: "Browser extension integrates directly into your workflow",
+      title: "Works with Any AI",
+      description: "Browser extension integrates directly into your workflow with all AI tools",
       span: "col-span-1 row-span-2",
     },
   ];
